@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
+
 import 'rxjs/Rx';
 
 
@@ -11,11 +12,11 @@ export class DatabaseService {
   constructor(private http: Http) { }
 
   saveData(data: object) {
-      return this.http.post('https://first-project-db151.firebaseio.com/People.json', data);
+      return this.http.post('https://first-project-db151.firebaseio.com/people.json', data);
   }
 
   getData() {
-      return this.http.get('https://first-project-db151.firebaseio.com/People.json')
+      return this.http.get('https://first-project-db151.firebaseio.com/people.json')
       .map(
         (response: Response) => {
             const data = response.json();

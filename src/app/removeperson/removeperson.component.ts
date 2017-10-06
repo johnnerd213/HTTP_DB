@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DbService } from '../services/db.service';
+import { NgForm } from '@angular/forms';
+import { IPerson } from '../interfaces/iperson';
 
 @Component({
   selector: 'app-removeperson',
@@ -6,10 +9,41 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./removeperson.component.css']
 })
 export class RemovepersonComponent implements OnInit {
+  baseURL = 'https://first-project-db151.firebaseio.com';
+  rootNode = 'people';
+  refID: any;
 
-  constructor() { }
+  fname: string;
+  lname: string;
+
+  person: object;
+
+  constructor(private dbService: DbService) { }
 
   ngOnInit() {
   }
 
+  editData(id){
+     console.log(id);
+     this.refID = id;
+     this.dbService.getID(`${this.baseURL}/${this.rootNode}/${this.refID}.json`)
+     .subscribe(
+       (response) => {
+           this.fname = response.firstName;
+           this.lname = response.lastName;
+       },
+       (error) => console.log(error)
+     );
+  }
+
+  deletingData(id) {
+
+       this.dbService.deleteData(`${this.baseURL}/${this.rootNode}/${this.refID}.json`,this.person)
+       .subscribe(
+         (response) => console.log(response),
+         (error) => console.log(error)
+       );
+  }
+
 }
+
