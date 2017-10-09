@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { DbService } from '../services/db.service';
 import { NgForm } from '@angular/forms';
@@ -9,7 +10,7 @@ import { IPerson } from '../interfaces/iperson';
   styleUrls: ['./removeperson.component.css']
 })
 export class RemovepersonComponent implements OnInit {
-  baseURL = 'https://first-project-db151.firebaseio.com';
+  baseURL = 'https://first-project-db151.firebaseio.com/';
   rootNode = 'people';
   refID: any;
 

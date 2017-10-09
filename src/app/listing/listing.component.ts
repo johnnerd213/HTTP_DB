@@ -19,7 +19,7 @@ import { PagerService } from '../services/pager.service';
 export class ListingComponent implements OnInit {
   @Output() modifyClicked = new EventEmitter<any>();
 
-  baseURL = 'https://first-project-db151.firebaseio.com';
+  baseURL = 'https://first-project-db151.firebaseio.com/';
   rootNode = 'people';
 
   peopleCollection: Array<IPerson> = [];
